@@ -5,6 +5,15 @@
     margin-bottom: 30px;
 }
 
-.card {
-    padding-bottom: 15px;
+.minhaImagem {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    border-radius: 7px;
+}
+
+.minhaImagem img {
+    border-radius: 7px;
 }
