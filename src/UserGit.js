@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import './UserGit.css';
-import { Button } from 'react-bootstrap';
+import "./UserGit.css";
+import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
 export default function User() {
 
@@ -56,45 +56,35 @@ export default function User() {
 
     return (
         <>
-            {/* Botão de pesquisa não estatico
             <div className="pesquisa">
-                <input value={search} onChange={handleChange} />
-                <button onClick={searchGit}>Pesquisar</button>
-            </div>*/}
-
-            {/* Botão de pesquisa não estatico usando aerofunction*/}
-            <div className="pesquisa">
-                <input value={search} onChange={((e) => setSearch(e.target.value))} />
-                <button onClick={searchGit}>Pesquisar</button>
+                <InputGroup>
+                    <Input value={search} onChange={((e) => setSearch(e.target.value))} />
+                    <InputGroupAddon addonType="prepend"><Button onClick={searchGit} outline color="info">Pesquisar</Button>{' '}</InputGroupAddon>
+                </InputGroup>
             </div>
 
-            <img src={image} />
+
+            {/* repositorios a direita e informações a esquerda 
+                - necessários criar divs
+                - cuidar do tamanho da imagem
+                - utilização de container -> grid
+            */}
             <div className="card">
+                <img src={image} />
                 <h3>Nome: {name}</h3>
                 <h3>Bio: {bio}</h3>
                 <h3>Localização: {location}</h3>
+
+                <h3>Repositórios: </h3>
+                <div>
+                    {repo.map((element) => (
+                        <ul key={element.id}>
+                            <li>Nome: {element.name}</li>
+                            <li>Descrição: {element.description}</li>
+                        </ul>
+                    ))}
+                </div>
             </div>
-            <h3>Repositórios: </h3>
-            <div>
-                {/* aerofunction utiliza () ao inves de {} dentro do html */}
-                {repo.map((element) => (
-                    <ul key={element.id}>
-                        <li>Nome: {element.name}</li>
-                        <li>Descrição: {element.description}</li>
-                    </ul>
-                ))}
-            </div>
-            <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
-
-            <script
-                src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
-                crossorigin></script>
-
-            <script
-                src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-                crossorigin></script>
-
-            <script>var Alert = ReactBootstrap.Alert;</script>
         </>
     );
 }

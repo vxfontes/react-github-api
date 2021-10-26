@@ -1,6 +1,8 @@
 .pesquisa {
-    float: right;
-    padding: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .card {
