@@ -7,6 +7,7 @@ import {
     Container, Row, Col, Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Fade
 } from 'reactstrap';
+import GitRepo from "./GitRepo";
 
 
 export default function User() {
@@ -15,6 +16,7 @@ export default function User() {
     const [bio, setBio] = useState("");
     const [location, setLocation] = useState("");
     const [image, setImage] = useState("");
+    const [stars, setStars] = useState("");
     const [search, setSearch] = useState("");
     const [repo, setRepo] = useState([]);
 
@@ -31,16 +33,20 @@ export default function User() {
                 setBio(body.data.bio);
                 setLocation(body.data.location);
                 setImage(body.data.avatar_url);
+                setStars(body.data.stargazers_count);
             })
 
             .catch((error) => {
                 console.log(error);
-                setName("nada");
-                setBio("não existe");
-                setLocation("nothing");
-                setImage("nadinha");
+                setName("Usuário GitHub");
+                setBio("Usuário GitHub");
+                setLocation("Usuário GitHub");
+                setImage();
+                setStars(0);
+                window.alert("Usuário não encontrado");
             })
     }
+
 
     useEffect(() => {
 
@@ -69,18 +75,6 @@ export default function User() {
             </div>
 
             <div>
-                {/*
-
-                <h3>Repositórios: </h3>
-                <div>
-                    {repo.map((element) => (
-                        <ul key={element.id}>
-                            <li>Nome: {element.name}</li>
-                            <li>Descrição: {element.description}</li>
-                        </ul>
-                    ))}
-                </div> */}
-
                 <Container>
                     <Row>
                         {/* coluna da esquerda com as informações do usuario */}
@@ -91,7 +85,7 @@ export default function User() {
                                     <CardTitle tag="h5">Nome: {name}</CardTitle>
                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Biografia: {bio}</CardSubtitle>
                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Localização: {location}</CardSubtitle>
-                                    <Button style={{ marginTop: '10px' }} onClick={toggle}>Mostrar repositórios</Button>
+                                    <Button style={{ marginTop: '10px' }} onClick={toggle} color="info">Mostrar repositórios</Button>
                                 </CardBody>
                             </Card>
                         </Col>
@@ -99,16 +93,14 @@ export default function User() {
                         {/* coluna da direita que mostra os Repositórios */}
                         <Col>
                             <Card>
-                                <CardTitle tag="h5">Repositórios: </CardTitle>
+                                <CardTitle className="titlee" tag="h5">Repositórios: </CardTitle>
                                 <Fade in={fadeIn}>
 
                                     {/* Apenas os 6 primeiros repositórios devem ser exibidos, dispostos
                                         numa tabela de cartões de 3 linhas e 2 colunas.
                                     Os repositórios deverão exibir as seguintes informações: Título,
                                         descrição e quantidade de estrelas. */}
-
-                                    
-
+                                    <GitRepo getRepo={repo}/>
                                 </Fade>
                             </Card>
                         </Col>
