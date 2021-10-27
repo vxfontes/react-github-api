@@ -16,7 +16,6 @@ export default function User() {
     const [bio, setBio] = useState("");
     const [location, setLocation] = useState("");
     const [image, setImage] = useState("");
-    const [stars, setStars] = useState("");
     const [search, setSearch] = useState("");
     const [repo, setRepo] = useState([]);
 
@@ -33,7 +32,6 @@ export default function User() {
                 setBio(body.data.bio);
                 setLocation(body.data.location);
                 setImage(body.data.avatar_url);
-                setStars(body.data.stargazers_count);
             })
 
             .catch((error) => {
@@ -42,7 +40,6 @@ export default function User() {
                 setBio("Usuário GitHub");
                 setLocation("Usuário GitHub");
                 setImage();
-                setStars(0);
                 window.alert("Usuário não encontrado");
             })
     }
@@ -100,7 +97,7 @@ export default function User() {
                                         numa tabela de cartões de 3 linhas e 2 colunas.
                                     Os repositórios deverão exibir as seguintes informações: Título,
                                         descrição e quantidade de estrelas. */}
-                                    <GitRepo getRepo={repo}/>
+                                    <GitRepo getRepo={repo} n1={0} n2={6}/>
                                 </Fade>
                             </Card>
                         </Col>
