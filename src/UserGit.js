@@ -4,8 +4,8 @@ import axios from 'axios';
 import "./UserGit.css";
 import {
     Button, Input, InputGroup, InputGroupAddon,
-    Container, Row, Col, Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Fade
+    Container, Row, Col, Card, CardBody,
+    CardTitle, CardSubtitle, Fade, Table
 } from 'reactstrap';
 import GitRepo from "./GitRepo";
 
@@ -97,7 +97,22 @@ export default function User() {
                                         numa tabela de cartões de 3 linhas e 2 colunas.
                                     Os repositórios deverão exibir as seguintes informações: Título,
                                         descrição e quantidade de estrelas. */}
-                                    <GitRepo getRepo={repo} n1={0} n2={6}/>
+                                    <Table className="tabela">
+                                        <tbody>
+                                            <tr>
+                                                <td><GitRepo getRepo={repo} n1={0} n2={1} /></td>
+                                                <td><GitRepo getRepo={repo} n1={1} n2={2} /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><GitRepo getRepo={repo} n1={2} n2={3} /></td>
+                                                <td><GitRepo getRepo={repo} n1={3} n2={4} /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><GitRepo getRepo={repo} n1={4} n2={5} /></td>
+                                                <td><GitRepo getRepo={repo} n1={5} n2={6} /></td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
                                 </Fade>
                             </Card>
                         </Col>
