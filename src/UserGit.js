@@ -8,6 +8,7 @@ import {
     CardTitle, CardSubtitle, Fade, Table
 } from 'reactstrap';
 import GitRepo from "./GitRepo";
+import imageIcon from "./img/icon.png"
 
 
 export default function User() {
@@ -39,7 +40,7 @@ export default function User() {
                 setName("Usuário GitHub");
                 setBio("Usuário GitHub");
                 setLocation("Usuário GitHub");
-                setImage();
+                setImage(imageIcon);
                 window.alert("Usuário não encontrado");
             })
     }
@@ -92,11 +93,6 @@ export default function User() {
                             <Card>
                                 <CardTitle className="titlee" tag="h5">Repositórios: </CardTitle>
                                 <Fade in={fadeIn}>
-
-                                    {/* Apenas os 6 primeiros repositórios devem ser exibidos, dispostos
-                                        numa tabela de cartões de 3 linhas e 2 colunas.
-                                    Os repositórios deverão exibir as seguintes informações: Título,
-                                        descrição e quantidade de estrelas. */}
                                     <Table className="tabela">
                                         <tbody>
                                             <tr>
