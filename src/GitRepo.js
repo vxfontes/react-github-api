@@ -12,7 +12,7 @@ const GitRepo = ({ getRepo, n1, n2 }) => {
             <ul key={element.id}>
                 <Toast className='cartao'>
                     <ToastHeader>
-                        {element.name}
+                        <a className="link text-info" href={element.html_url}>{element.name}</a>
                     </ToastHeader>
                     <ToastBody>
                         Descrição: {element.description} <br></br>
