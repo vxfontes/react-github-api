@@ -78,7 +78,7 @@ export default function User() {
                         {/* coluna da esquerda com as informações do usuario */}
                         <Col>
                             <Card>
-                                <div className="minhaImagem"><img width="100%" src={image} /></div>
+                                <div className="minhaImagem"><img width="100%" src={image} alt="Imagem do usuário"/></div>
                                 <CardBody>
                                     <CardTitle tag="h5">Nome: {name}</CardTitle>
                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Biografia: {bio}</CardSubtitle>
